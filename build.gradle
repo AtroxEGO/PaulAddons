@@ -1,0 +1,74 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.minecraftforge.net' }
+        maven { url 'https://jitpack.io' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.sdxqw:ForgeGradle:f2c5bb338e'
+    }
+}
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+group 'me.atroxego.pauladdons'
+version '1.8.9'
+
+compileJava {
+    sourceCompatibility = targetCompatibility = 8
+}
+
+minecraft {
+    version = '1.8.9-11.15.1.2318-1.8.9'
+    runDir = 'run'
+    mappings = 'stable_22'
+    def arg = '-XX:-DisableExplicitGC'
+    clientJvmArgs.addAll(arg)
+    serverJvmArgs.addAll(arg)
+    makeObfSourceJar = false
+}
+
+configurations {
+    include
+    implementation.extendsFrom(include)
+
+    runtimeOnly{
+        canBeResolved = true
+    }
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
+    mavenCentral()
+}
+
+dependencies {
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+shadowJar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    configurations = [project.configurations.include]
+    exclude 'LICENSE.txt', 'dummyThing'
+}
+

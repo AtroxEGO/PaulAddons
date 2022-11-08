@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "pauladdons",
+    "name": "PaulAddons",
+    "description": "Addons made by Paul for Paul",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "AtroxEGO"
+    ],
+    "credits": "Forge,FML",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
