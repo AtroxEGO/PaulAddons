@@ -11,7 +11,7 @@ import net.minecraft.util.ChatComponentText;
 import java.util.List;
 
 public class ScaleCommand extends CommandBase {
-    public static double timerScale;
+    public static double timerScale = 1;
     @Override
     public String getCommandName() {
         return "scale";
@@ -47,7 +47,7 @@ public class ScaleCommand extends CommandBase {
         }
 
         switch (arg1[0].toLowerCase()) {
-            case "bonzotimer":
+            case "timer":
                 timerScale = scaleAmount;
                 player.addChatMessage(new ChatComponentText( PaulAddons.MAIN_COLOUR +"Bonzo's Mask timer has been scaled to " + PaulAddons.SECONDARY_COLOUR + timerScale + "x"));
                 break;

@@ -18,7 +18,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 group 'me.atroxego.pauladdons'
-version '1.8.9'
+version '0.0.1'
 
 compileJava {
     sourceCompatibility = targetCompatibility = 8
