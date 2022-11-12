@@ -14,9 +14,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import static me.atroxego.pauladdons.utils.Utils.getNextCult;
+
 public class PaulAddonsGui extends GuiScreen {
     private final int page;
-
     private GuiButton closeGUI;
     private GuiButton backPage;
     private GuiButton nextPage;
@@ -45,7 +46,7 @@ public class PaulAddonsGui extends GuiScreen {
         githubLink = new GuiButton(0, 2, height - 50, 80, 20, "GitHub");
 
         changeDisplay = new GuiButton(0, width / 2 - 100, (int) (height * 0.1), "Change Display Settings");
-        timer = new GuiButton(0, width / 2 - 100, (int) (height * 0.2), "Bonzo's Mask Timer: " + Utils.getColouredBoolean(ToggleCommand.timerToggled));
+        timer = new GuiButton(0, width / 2 - 100, (int) (height * 0.2), "Star Cult Timer: " + Utils.getColouredBoolean(ToggleCommand.timerToggled));
 
         switch (page){
             case 1:
@@ -84,7 +85,8 @@ public class PaulAddonsGui extends GuiScreen {
         } else if (button == changeDisplay) PaulAddons.guiToOpen = "displaygui";
         else if (button == timer) {
             ToggleCommand.timerToggled = !ToggleCommand.timerToggled;
-            timer.displayString = "Bonzo's Mask Timer: " + Utils.getColouredBoolean(ToggleCommand.timerToggled);
+            getNextCult();
+            timer.displayString = "Star Cult Timer: " + Utils.getColouredBoolean(ToggleCommand.timerToggled);
         }
     }
 }

@@ -11,6 +11,8 @@ import net.minecraft.util.ChatComponentText;
 
 import java.util.List;
 
+import static me.atroxego.pauladdons.utils.Utils.getNextCult;
+
 public class ToggleCommand extends CommandBase implements ICommand {
     public static boolean timerToggled;
 
@@ -45,7 +47,8 @@ public class ToggleCommand extends CommandBase implements ICommand {
         switch (arg1[0].toLowerCase()) {
             case "timer":
                 timerToggled = !timerToggled;
-                player.addChatMessage(new ChatComponentText(PaulAddons.MAIN_COLOUR + "Bonzo's Mask timer has been set to " + PaulAddons.SECONDARY_COLOUR + timerToggled + PaulAddons.MAIN_COLOUR + "."));
+                getNextCult();
+                player.addChatMessage(new ChatComponentText(PaulAddons.MAIN_COLOUR + "Star Cult timer has been set to " + PaulAddons.SECONDARY_COLOUR + timerToggled + PaulAddons.MAIN_COLOUR + "."));
                 break;
         }
     }

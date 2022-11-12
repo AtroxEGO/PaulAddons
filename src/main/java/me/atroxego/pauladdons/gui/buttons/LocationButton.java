@@ -2,8 +2,10 @@ package me.atroxego.pauladdons.gui.buttons;
 
 import me.atroxego.pauladdons.handlers.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.util.ResourceLocation;
 
 public class LocationButton extends GuiButton {
 
@@ -53,7 +55,8 @@ public class LocationButton extends GuiButton {
 	}
 	
 	@Override
-	public void playPressSound(SoundHandler soundHandler) {
+	public void playPressSound(SoundHandler p_playPressSound_1_) {
+		p_playPressSound_1_.playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
 	}
 	
 }
