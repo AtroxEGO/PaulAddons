@@ -6,6 +6,8 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 
+import static me.atroxego.pauladdons.utils.Utils.getNextCult;
+
 public class DateSetCommand extends CommandBase {
     public String getCommandName() {
         return "dateset";
@@ -27,5 +29,6 @@ public class DateSetCommand extends CommandBase {
         Utils.currentDay = Integer.parseInt(arg1[0]);
         Utils.currentHour = Integer.parseInt(arg1[1]);
         Utils.currentMinute = Integer.parseInt(arg1[2]);
+        getNextCult();
     }
 }

@@ -1,6 +1,7 @@
 package me.atroxego.pauladdons.commands;
 
 import me.atroxego.pauladdons.PaulAddons;
+import me.atroxego.pauladdons.handlers.ConfigHandler;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -11,7 +12,7 @@ import net.minecraft.util.ChatComponentText;
 import java.util.List;
 
 public class MoveCommand extends CommandBase {
-    public static int[] timerXY = {0, 0};
+    public static int[] cultTimerXY = {0, 0};
 
     @Override
     public String getCommandName() {
@@ -44,8 +45,10 @@ public class MoveCommand extends CommandBase {
         }
         switch (arg1[0].toLowerCase()) {
             case "timer":
-                timerXY[0] = Integer.parseInt(arg1[1]);
-                timerXY[1] = Integer.parseInt(arg1[2]);
+                cultTimerXY[0] = Integer.parseInt(arg1[1]);
+                cultTimerXY[1] = Integer.parseInt(arg1[2]);
+                ConfigHandler.writeIntConfig("locations", "cultTimerX", cultTimerXY[0]);
+                ConfigHandler.writeIntConfig("locations", "cultTimerY", cultTimerXY[1]);
                 player.addChatMessage(new ChatComponentText(PaulAddons.MAIN_COLOUR + "Timer has been moved to " + PaulAddons.SECONDARY_COLOUR + arg1[1] + ", " + arg1[2]));
                 break;
             default:

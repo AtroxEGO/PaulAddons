@@ -1,6 +1,7 @@
 package me.atroxego.pauladdons.commands;
 
 import me.atroxego.pauladdons.PaulAddons;
+import me.atroxego.pauladdons.handlers.ConfigHandler;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -11,14 +12,14 @@ import net.minecraft.util.ChatComponentText;
 import java.util.List;
 
 public class ScaleCommand extends CommandBase {
-    public static double timerScale = 1;
+    public static double cultTimerScale = 1;
     @Override
     public String getCommandName() {
         return "scale";
     }
     @Override
     public String getCommandUsage(ICommandSender arg0) {
-        return "/" + getCommandName() + " <timer> <size (0.1 - 10)>";
+        return "/" + getCommandName() + " <CultTimer> <size (0.1 - 10)>";
     }
     @Override
     public int getRequiredPermissionLevel() {
@@ -27,7 +28,7 @@ public class ScaleCommand extends CommandBase {
     @Override
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
         if (args.length == 1) {
-            return getListOfStringsMatchingLastWord(args, "coords", "display", "dungeontimer", "skill50", "lividhp", "caketimer", "skilltracker", "wateranswer", "bonzotimer");
+            return getListOfStringsMatchingLastWord(args, "CultTimer");
         }
         return null;
     }
@@ -47,9 +48,10 @@ public class ScaleCommand extends CommandBase {
         }
 
         switch (arg1[0].toLowerCase()) {
-            case "timer":
-                timerScale = scaleAmount;
-                player.addChatMessage(new ChatComponentText( PaulAddons.MAIN_COLOUR +"Bonzo's Mask timer has been scaled to " + PaulAddons.SECONDARY_COLOUR + timerScale + "x"));
+            case "culttimer":
+                cultTimerScale = scaleAmount;
+                ConfigHandler.writeDoubleConfig("scales", "cultTimerScale", cultTimerScale);
+                player.addChatMessage(new ChatComponentText( PaulAddons.MAIN_COLOUR +"Star Cult Timer has been scaled to " + PaulAddons.SECONDARY_COLOUR + cultTimerScale + "x"));
                 break;
             default:
                 player.addChatMessage(new ChatComponentText(PaulAddons.ERROR_COLOUR + "Usage: " + getCommandUsage(arg0)));

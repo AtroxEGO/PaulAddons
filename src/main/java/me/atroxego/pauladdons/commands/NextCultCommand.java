@@ -7,7 +7,8 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 
-import static me.atroxego.pauladdons.api.dateInformation.getDateInformation;
+import static me.atroxego.pauladdons.handlers.dateInformation.getDateInformation;
+import static me.atroxego.pauladdons.utils.Utils.getNextCult;
 
 public class NextCultCommand extends CommandBase {
     @Override
@@ -26,9 +27,10 @@ public class NextCultCommand extends CommandBase {
     @Override
     public void processCommand(ICommandSender arg0, String[] arg1) throws CommandException {
         getDateInformation();
-        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Next Cult in: " + Utils.getTimeFromSeconds(Utils.secondsTillEvent)));
+        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Current Lobby Day: " + Minecraft.getMinecraft().theWorld.getCurrentDate()));
         Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Current Day: " + Utils.currentDay));
         Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Current Hour: " + Utils.currentHour));
         Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Current Minute: " + Utils.currentMinute));
+        getNextCult();
     }
 }

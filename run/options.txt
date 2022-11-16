@@ -1,14 +1,14 @@
 invertYMouse:false
 mouseSensitivity:0.5
-fov:1.0
+fov:0.0
 gamma:0.0
 saturation:0.0
-renderDistance:2
+renderDistance:12
 guiScale:2
 particles:0
 bobView:true
 anaglyph3d:false
-maxFps:60
+maxFps:120
 fboEnable:true
 difficulty:2
 fancyGraphics:true
@@ -16,7 +16,7 @@ ao:2
 renderClouds:true
 resourcePacks:[]
 incompatibleResourcePacks:[]
-lastServer:mcsurvi.pl
+lastServer:
 lang:en_US
 chatVisibility:0
 chatColors:true
@@ -90,17 +90,16 @@ key_key.hotbar.6:7
 key_key.hotbar.7:8
 key_key.hotbar.8:9
 key_key.hotbar.9:10
-key_Open Gui:54
-key_Debug:157
-soundCategory_master:0.0
-soundCategory_music:0.03521127
-soundCategory_record:0.2112676
-soundCategory_weather:0.19014084
+key_Open Gui:157
+soundCategory_master:0.33112583
+soundCategory_music:0.0
+soundCategory_record:0.23239437
+soundCategory_weather:0.20422535
 soundCategory_block:0.15492958
-soundCategory_hostile:0.18309858
-soundCategory_neutral:0.19014084
-soundCategory_player:0.19014084
-soundCategory_ambient:0.14084508
+soundCategory_hostile:0.11971831
+soundCategory_neutral:0.17605634
+soundCategory_player:0.14788732
+soundCategory_ambient:0.17605634
 modelPart_cape:true
 modelPart_jacket:true
 modelPart_left_sleeve:true
