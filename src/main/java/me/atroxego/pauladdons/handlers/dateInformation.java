@@ -1,4 +1,4 @@
-package me.atroxego.pauladdons.api;
+package me.atroxego.pauladdons.handlers;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -27,8 +27,7 @@ public class dateInformation {
             url = new URL("https://api.slothpixel.me/api/skyblock/calendar");
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
-            conn.connect();
-
+//            conn.connect();
             int responseCode = conn.getResponseCode();
 
             if (responseCode != 200) {
@@ -46,11 +45,9 @@ public class dateInformation {
                 JsonArray dataObject = (JsonArray) parse.parse("[" + String.valueOf(informationString) + "]");
 
                 System.out.println(dataObject.get(0));
-
                 dateData = (JsonObject) dataObject.get(0);
 //                conn.disconnect();
-            }
-        } catch (Exception e) {
+            }        } catch (Exception e) {
             e.printStackTrace();
         }
     }

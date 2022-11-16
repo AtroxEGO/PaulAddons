@@ -1,6 +1,8 @@
 package me.atroxego.pauladdons.commands;
 
 import me.atroxego.pauladdons.PaulAddons;
+import me.atroxego.pauladdons.handlers.ConfigHandler;
+import me.atroxego.pauladdons.utils.Utils;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -8,13 +10,14 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 
 import java.util.List;
 
 import static me.atroxego.pauladdons.utils.Utils.getNextCult;
 
 public class ToggleCommand extends CommandBase implements ICommand {
-    public static boolean timerToggled;
+    public static boolean cultTimerToggled;
 
     @Override
     public String getCommandName() {
@@ -46,9 +49,10 @@ public class ToggleCommand extends CommandBase implements ICommand {
         }
         switch (arg1[0].toLowerCase()) {
             case "timer":
-                timerToggled = !timerToggled;
+                cultTimerToggled = !cultTimerToggled;
+                ConfigHandler.writeBooleanConfig("toggles", "cultTimerToggled", cultTimerToggled);
                 getNextCult();
-                player.addChatMessage(new ChatComponentText(PaulAddons.MAIN_COLOUR + "Star Cult timer has been set to " + PaulAddons.SECONDARY_COLOUR + timerToggled + PaulAddons.MAIN_COLOUR + "."));
+                player.addChatMessage(new ChatComponentText(Utils.modPrefix + EnumChatFormatting.DARK_AQUA + " Star Cult Timer: " + (cultTimerToggled ? EnumChatFormatting.GREEN + "On" : EnumChatFormatting.RED + "Off")));
                 break;
         }
     }
