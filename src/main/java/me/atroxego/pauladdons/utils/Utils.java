@@ -25,7 +25,6 @@ public class Utils {
         int nextCultInDays = 0;
         int nextCultInHours = 0;
         int nextCultInMinutes = 0;
-// DAY 28 HOUR 6 ISNT WORKING FOR NOW
 
             if (currentDay % 7 == 0 && currentHour < 6){
                 cultActive = true;
@@ -43,7 +42,7 @@ public class Utils {
             }
         }
             }
-        if (currentDay >= 28 && currentHour >= 6) {
+        if ((currentDay >= 28 && currentHour >= 6) || currentDay > 28) {
             cultActive = false;
             nextCultInDays = 37 - currentDay;
             nextCultInHours = 23 - currentHour;
@@ -54,11 +53,7 @@ public class Utils {
         nextCult = timeNow + secondsTillCult;
     }
     public static String getTimeBetween(double timeOne, double timeTwo) {
-//        System.out.println(timeOne);
-//        System.out.println(timeTwo);
-//        System.out.println(timeTwo - timeOne);
         double secondsBetween = Math.floor(timeTwo - timeOne);
-//        System.out.println(secondsBetween + "a");
         String timeFormatted;
         int days;
         int hours;
