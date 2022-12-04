@@ -16,6 +16,7 @@ public class Utils {
     public static double nextCult = 0;
     public static boolean cultActive = false;
     public static String modPrefix = EnumChatFormatting.BOLD.toString() + EnumChatFormatting.AQUA.toString() + "[Paul Addons]";
+    private static boolean veryImportantBoolean = false;
 
     public static String getColouredBoolean(boolean bool){
         return bool ? EnumChatFormatting.GREEN + "On" : EnumChatFormatting.RED + "Off";
@@ -31,7 +32,7 @@ public class Utils {
                 nextCultInDays = -1;
                 nextCultInHours = 23 - currentHour;
                 nextCultInMinutes = 60 - currentMinute;
-                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(Utils.modPrefix + EnumChatFormatting.DARK_AQUA + " Star Cult!"));
+                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(Utils.modPrefix + EnumChatFormatting.DARK_AQUA + " Star Cult! Option 1"));
             }else {
             for (int i = 28; i>=7; i-=7){
                 if (currentDay < i) {
@@ -79,18 +80,22 @@ public class Utils {
         return timeFormatted;
     }
 public static double getTimeSecBetween (double timeOne, double timeTwo){
-        return Math.floor(timeTwo - timeOne);
+        if ((timeTwo - timeOne < 0 && timeTwo - timeOne > -1) && !veryImportantBoolean) {
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(Utils.modPrefix + EnumChatFormatting.DARK_AQUA + " Star Cult Active!"));
+            veryImportantBoolean = true;
+        }
+        return timeTwo - timeOne;
 }
     public static String getTimeCultEnd (double timeOne, double timeTwo){
         if ((currentDay + 1) % 7 == 0){
             currentDay++;
             currentHour = 0;
             currentMinute = 0;
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(Utils.modPrefix + EnumChatFormatting.DARK_AQUA + " Star Cult!"));
         }
         if ((timeTwo+300) - timeOne < 0){
             getDateInformation();
             getNextCult();
+            veryImportantBoolean = false;
             return "What Happened? API prob down -_-";
         } else return getTimeBetween(timeOne, timeTwo+300);
     }
